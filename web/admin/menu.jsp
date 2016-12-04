@@ -131,6 +131,39 @@
                     <li class="active">
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
+                     <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i>Loại SP<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo1" class="collapse">
+                            <li>
+                                <a href="themcategory.jsp">Thêm loại mới</a>
+                            </li>
+                            <li>
+                                <a href="quanlycategory.jsp">Danh sách loại</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i>Sản phẩm<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo2" class="collapse">
+                            <li>
+                                <a href="themproduct.jsp">Thêm SP mới</a>
+                            </li>
+                            <li>
+                                <a href="quanlyproduct.jsp">Danh sách sàn phẩm</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i>Khách hàng<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo3" class="collapse">
+                            <li>
+                                <a href="themcustomer.jsp">Thêm khách hàng</a>
+                            </li>
+                            <li>
+                                <a href="quanlycustomer.jsp">Danh sách sàn phẩm</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>

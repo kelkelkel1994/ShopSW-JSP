@@ -37,6 +37,21 @@ public class CategoryDAO {
         }
         return list;
     }
+     // get danh sách thể loại tồn tại true
+    public ArrayList<Category> getListLoai() throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "SELECT * FROM product_category WHERE Status=true";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Category> list = new ArrayList<>();
+        while (rs.next()) {
+            Category category = new Category();
+            category.setCategoryID(rs.getLong("ID_Category"));
+            category.setCategoryName(rs.getString("Name"));
+            list.add(category);
+        }
+        return list;
+    }
 
     //get 1 ten loai
     public Category getCategory(long category_id) throws SQLException {

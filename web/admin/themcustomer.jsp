@@ -61,10 +61,10 @@
                     
                         <div class="panel panel-success" >
                             <div class="panel-heading">
-                                <h3 class="panel-title"> Tên Khách hàng </label></h3>
+                                <h3 class="panel-title"> Điền thông tin khách hàng </label></h3>
                             </div>
                             <div class="panel-body">
-                                <input type="text" class="form-control" name="tenKhach" placeholder="Nhập tên danh mục" required><%=error%>
+                                <input type="text" class="form-control" name="tenKhach" placeholder="Nhập tên khách hàng" required><%=error%>
                            <br> <input type="text" class="form-control" name="userKhach" placeholder="Nhập tên tài khoản" required>
                             <br> <input type="password" class="form-control" name="passKhach" placeholder="Nhập password" required>
                              <br> <input type="number" class="form-control" name="phoneKhach" placeholder="Nhập tên điện thoại" required>
