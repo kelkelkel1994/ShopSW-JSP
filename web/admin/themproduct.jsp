@@ -3,6 +3,7 @@
     Created on : Dec 4, 2016, 3:30:12 PM
     Author     : SONPC
 --%>
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Category"%>
 <%@page import="dao.CategoryDAO"%>
@@ -56,7 +57,7 @@
                 </div>
                 <div id="page-wrapper">
                     <div class="row">
-                        <form action="/ShopSW/ManagerProductServlet" method="post" role="form">
+                        <form action="/ShopSW/ManagerProductServlet" method="post" enctype="multipart/form-data">
                             <div class="panel panel-success" >
                                 <div class="panel-heading">
                                     <h3 class="panel-title"> Điền thông tin sản phẩm</h3>
@@ -68,17 +69,17 @@
                                             <input type="text" class="form-control" name="tenSanpham" placeholder="Nhập tên Sản phẩm" required>
                                         </div>
 
-                                       
+
 
                                         <div class="form-group">
                                             <label>Chọn Loại</label>
                                             <select class="form-control" name="maLoai">
-                                            <%                           
+                                            <%
                                                 for (Category category : listLoai) {
                                             %>
                                             <option value="<%=category.getCategoryID()%>"><%=category.getCategoryName()%></option>
                                             <%}%>
-                                          
+
                                         </select>
                                     </div>
 
@@ -102,9 +103,21 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" class="form-control" name="hinh1" placeholder="Chọn hình 1" required>
-                                    <input type="text" class="form-control" name="hinh2" placeholder="Chọn hình 2" required>
-                                    <input type="text" class="form-control" name="hinh3" placeholder="Chọn hình 3" required>
+                                    <div class="form-group">
+                                        <label>Hình đại diện</label>
+                                         <input type="file" class="form-control" name="uploadFile"  >
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sub1</label>
+                                         <input type="file" class="form-control" name="hinh2" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sub2</label>
+                                          <input type="file" class="form-control" name="hinh3" >
+                                    </div>
+                                   
+                                    
+                                   
 
                                     <div class="form-group">
                                         <label>Phân loại</label>
