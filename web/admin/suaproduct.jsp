@@ -1,13 +1,14 @@
 <%-- 
-    Document   : themproduct
-    Created on : Dec 4, 2016, 3:30:12 PM
+    Document   : suaproduct
+    Created on : Dec 6, 2016, 1:26:59 PM
     Author     : SONPC
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="java.util.ArrayList"%>
-<%@page import="model.Category"%>
 <%@page import="dao.CategoryDAO"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="model.Category"%>
+<%@page import="model.Product"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.ProductDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,60 +26,39 @@
         <link href="${root}/admin/css/sb-admin.css" rel="stylesheet">
 
         <!-- Morris Charts CSS -->
-        <link href="${root}/admin/js/plugins/morris/morris.css" rel="stylesheet">
+        <link href="${root}/admin/ss/plugins/morris.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
         <link href="${root}/admin/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Thêm Sản phẩm mới</title>
 
-<script src="${root}/admin/js/jquery-1.11.0.js" type="text/javascript"></script>
-    <script type="text/javascript">
-$('#submit').click( function() {
-//kiem tra trinh duyet co ho tro File API
-if (window.File && window.FileReader && window.FileList && window.Blob)
-{
-// lay dung luong va kieu file tu the input file
-var ftype1 = $('#file1')[0].files[0].type;
-//var ftype2 = $('#file2')[0].files[1].type;
-//var ftype3 = $('#file3')[0].files[2].type;
-        
-       
-switch(ftype1)
-{
-case 'image/png':
-case 'image/gif':
-case 'image/jpeg':
-case 'image/pjpeg':
-break;
-default:
-alert('Vui lòng chọn file ảnh!');
-}
 
-}else{
-alert("Trình duyệt ko hỗ trợ upload file, vui lòng nâng cấp trình duyệt");
-}
-});
-    </script>
     </head>
     <body>
         <%
             CategoryDAO categoryDAO = new CategoryDAO();
             ArrayList<Category> listLoai = categoryDAO.getListLoai();
         %>
+        <%
+            long id = Long.valueOf(request.getParameter("ID_Product"));
+            ProductDAO productDAO = new ProductDAO();
+            Product c = productDAO.getProduct(id);
+
+        %>
         <div id="wrapper">
 
             <jsp:include page="menu.jsp"></jsp:include>
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Thêm sản phẩm
+                        Sửa sản phẩm
                     </h1>
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-table"></i> Thêm sản phẩm mới
+                            <i class="fa fa-table"></i> Sửa thông tin sản phẩm
                         </li>
                     </ol>
                 </div>
@@ -87,24 +67,28 @@ alert("Trình duyệt ko hỗ trợ upload file, vui lòng nâng cấp trình du
                         <form action="/ShopSW/ManagerProductServlet" method="post" enctype="multipart/form-data">
                             <div class="panel panel-success" >
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"> Điền thông tin sản phẩm</h3>
+                                    <h3 class="panel-title"> Thông tin sản phẩm</h3>
                                 </div>
                                 <div class="panel-body">
                                     <div class="col-lg-6">
+                                         <div class="form-group">
+                                            <label>Mã sp</label>
+                                            <input type="text" class="form-control" name="ID_Product" value="<%=c.getProductID()%>" readonly>
+                                    </div>
                                         <div class="form-group">
                                             <label>Tên sản phẩm</label>
-                                            <input type="text" class="form-control" name="tenSanpham" placeholder="Nhập tên Sản phẩm" required>
-                                        </div>
+                                            <input type="text" class="form-control" name="tenSanpham" value="<%=c.getProductName()%>" required>
+                                    </div>
 
 
 
-                                        <div class="form-group">
-                                            <label>Chọn Loại</label>
-                                            <select class="form-control" name="maLoai">
+                                    <div class="form-group">
+                                        <label>Chọn Loại</label>
+                                        <select class="form-control" name="maLoai">
                                             <%
                                                 for (Category category : listLoai) {
                                             %>
-                                            <option value="<%=category.getCategoryID()%>"><%=category.getCategoryName()%></option>
+                                            <option value="<%=category.getCategoryID()%>"<% if (c.getCategoryID() == category.getCategoryID()) {%>selected <%}%>><%=category.getCategoryName()%></option>
                                             <%}%>
 
                                         </select>
@@ -112,68 +96,79 @@ alert("Trình duyệt ko hỗ trợ upload file, vui lòng nâng cấp trình du
 
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="number" class="form-control" name="gia" placeholder="Giá bán" required>
+                                        <input type="number" class="form-control" name="gia" value="<%=c.getProductPrite()%>" required>
                                         <span class="input-group-addon">VNĐ</span>
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="number" class="form-control" name="giaKM" placeholder="Giá khuyến mãi" >
+                                        <input type="number" class="form-control" name="giaKM" value="<%=c.getProductPromotionPrice()%>" >
                                         <span class="input-group-addon">VNĐ</span>
                                     </div>
                                     <div class="form-group">
                                         <label>Mô tả ngắn</label>
-                                        <input class="form-control" name="motaNgan" placeholder="Mô tả ngắn">
+                                        <input class="form-control" name="motaNgan" value="<%=c.getProductShortDescription()%>">
                                     </div>
                                     <div class="form-group">
                                         <label>Mô tả</label>
-                                        <textarea class="form-control" name="mota" rows="3"></textarea>
+                                        <textarea class="form-control" name="mota" rows="3" ><%=c.getProductDescription()%></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Hình đại diện</label>
-                                         <input  id="file123" type="file" class="form-control" name="uploadFile" accept="image/*" required >
+                                        <input type="file" class="form-control" name="uploadFile"  >
+                                        <input class="form-control col-lg-3" type="text" name="anhbia" value="<%=c.getProductImagesFeature()%>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label>Sub1</label>
-                                         <input type="file" class="form-control" name="hinh2" accept="image/*" id="file2" required>
+                                        <input type="file" class="form-control" name="hinh2" >
+                                        <input class="form-control col-md-3"  type="text" name="anh1" value="<%=c.getProductSubImages1()%>" readonly>
+
                                     </div>
                                     <div class="form-group">
                                         <label>Sub2</label>
-                                          <input type="file" class="form-control" name="hinh3" accept="image/*" id="file3" required>
+                                        <input type="file" class="form-control" name="hinh3" >
+                                        <input class="form-control col-lg-3" type="text" name="anh2" value="<%=c.getProductSubImages2()%>" readonly>
                                     </div>
-                                   
-                                    
-                                   
+
+
+
 
                                     <div class="form-group">
                                         <label>Phân loại</label>
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" name="trangthaiKM" value="true">Khuyến mãi
+                                            <input type="checkbox" name="trangthaiNew" value="true" <%if (c.getProductStNew() == true) {%>checked<%}%>>Mới
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" name="trangthaiHot" value="true">Hot
+                                            <input type="checkbox" name="trangthaiKM" value="true" <%if (c.getProductStPromotion() == true) {%>checked<%}%>>Khuyến mãi
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" name="trangthaiTop" value="true">Top
+                                            <input type="checkbox" name="trangthaiHot" value="true" <%if (c.getProductStHot() == true) {%>checked<%}%>>Hot
                                         </label>
                                         <label class="checkbox-inline">
-                                            <input type="checkbox" name="trangthaiTopWeek" value="true">Top Week
+                                            <input type="checkbox" name="trangthaiTop" value="true" <%if (c.getProductStTop() == true) {%>checked<%}%>>Top
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="trangthaiTopWeek" value="true" <%if (c.getProductStTopWeek() == true) {%>checked<%}%>>Top Week
                                         </label>
                                     </div>
-                                    <button type="reset" class="btn btn-default">Nhập lại</button>
-                                    <input id="submit" type="hidden" name="command" value="insert" >
-                                    <input id="submit" type="submit" class="btn btn-default" value="Lưu dữ liệu" >
+                                    <div class="form-group">
+                                        <label>Trạng thái sản phẩm</label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="trangthaiSanPham" value="true" <%if (c.getProductSt() == true) {%>checked<%}%>>Xuất hiện trong menu
+                                        </label>
+                                    </div>
+                                    
+                                    <input type="hidden" name="command" value="update">
+                                    <input type="submit" class="btn btn-default" value="Lưu dữ liệu" >
                                     <a href="${root}/admin/quanlyproduct.jsp"  class="btn btn-default">Hủy bỏ</a>
                                 </div>
-    
+
                             </div>
                         </div> 
                     </form>
                 </div>
             </div>
         </div>
-                                
     </body>
-    
 </html>

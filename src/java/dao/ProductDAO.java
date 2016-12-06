@@ -66,9 +66,15 @@ public class ProductDAO {
             } else {
                 product.setProductStTopWeek(true);
             }
+            if (Integer.parseInt(rs.getString("Status")) == 0) {
+                product.setProductSt(false);
+            } else {
+                product.setProductSt(true);
+            }
             list.add(product);
 
         }
+        connection.close();
         return list;
     }
 
@@ -116,12 +122,20 @@ public class ProductDAO {
             } else {
                 product.setProductStTopWeek(true);
             }
+            if (Integer.parseInt(rs.getString("Status")) == 0) {
+                product.setProductSt(false);
+            } else {
+                product.setProductSt(true);
+            }
         }
+        
+            connection.close();
+        
         return product;
     }
 
     // thêm mới dữ liệu
-    public boolean insertProduct(Product c) {
+    public boolean insertProduct(Product c) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "INSERT INTO product VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,true,?,true)";
         try {
@@ -143,38 +157,58 @@ public class ProductDAO {
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            connection.close();
         }
         return false;
     }
     // cập nhật dữ liệu
 
-    public boolean updateProduct(Product c) {
+     public boolean updateProduct(Product c) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "UPDATE product SET "
                 + "ID_Category = ?,Name=?,Price=?,PromotionPrice=?,ShortDescription=?,"
                 + "Description=?,ImagesFeature=?,Subimage1=?,Subimage2=? ,StatusPromotion=?,"
-                + "StatusHot=?,StatusTop=?,StatusNew=?,StatusTopWeek=?,Status=?"
-                + "WHERE ID_Product = ?";
+                + "StatusHot=?,StatusTop=?,StatusNew=?,StatusTopWeek=?,Status=? "
+                + "WHERE ID_Product = ?;";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
-            ps.setLong(2, c.getCategoryID());
-            ps.setString(3, c.getProductName());
-            ps.setLong(4, c.getProductPrite());
-            ps.setLong(5, c.getProductPromotionPrice());
-            ps.setString(6, c.getProductShortDescription());
-            ps.setString(7, c.getProductDescription());
-            ps.setString(8, c.getProductImagesFeature());
-            ps.setString(9, c.getProductSubImages1());
-            ps.setString(10, c.getProductSubImages2());
-            ps.setBoolean(11, c.getProductStPromotion());
-            ps.setBoolean(12, c.getProductStHot());
-            ps.setBoolean(13, c.getProductStTop());
-            ps.setBoolean(14, c.getProductStNew());
-            ps.setBoolean(15, c.getProductStTopWeek());
-            ps.setBoolean(16, c.getProductSt());
+            ps.setLong(1, c.getCategoryID());
+            ps.setString(2, c.getProductName());
+            ps.setLong(3, c.getProductPrite());
+            ps.setLong(4,c.getProductPromotionPrice());
+            ps.setString(5, c.getProductShortDescription());
+            ps.setString(6, c.getProductDescription());
+            ps.setString(7, c.getProductImagesFeature());
+            ps.setString(8, c.getProductSubImages1());
+            ps.setString(9, c.getProductSubImages2());
+            ps.setBoolean(10, c.getProductStPromotion());
+            ps.setBoolean(11, c.getProductStHot());
+            ps.setBoolean(12, c.getProductStTop());
+            ps.setBoolean(13, c.getProductStNew());
+            ps.setBoolean(14, c.getProductStTopWeek());
+            ps.setBoolean(15, c.getProductSt());
+            ps.setLong(16, c.getProductID());
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println(ex);
+        }finally{
+            connection.close();
+        }
+        return false;
+    }
+
+    // xóa dữ liệu
+    public boolean deleteProduct(long product_id) {
+        Connection connection = DBConnect.getConnection();
+        String sql = "DELETE FROM product WHERE ID_Product = ?";
+        try {
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setLong(1, product_id);
+            return ps.executeUpdate() == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }

@@ -118,8 +118,8 @@
                             <%}%></center></td>
                         <td >
                         <center>
-                            <a href="${root}/ShopSW/admin/suacustomer.jsp?command=update&ID_Customer=<%=product.getProductID()%>">Sửa</a>&nbsp;|
-                            <a href="${root}/ShopSW/ManagerCustomerServlet?command=delete&ID_Customer=<%=product.getProductID()%>">Xóa</a>
+                            <a href="${root}/ShopSW/admin/suaproduct.jsp?command=update&ID_Product=<%=product.getProductID()%>">Sửa</a>&nbsp;|
+                            <a href="${root}/ShopSW/ManagerProductServlet?command=delete&ID_Product=<%=product.getProductID()%>">Xóa</a>
                         </center>
                         </td>
                         </tr>

@@ -14,6 +14,7 @@ public class Category {
     private String categoryName;
     private boolean categorySt;
 
+  
     public boolean getCategorySt() {
         return categorySt;
     }

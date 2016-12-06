@@ -45,6 +45,7 @@ public class CustomerDAO {
             list.add(customer);
 
         }
+        connection.close();
         return list;
     }
   
@@ -71,10 +72,11 @@ public class CustomerDAO {
             }
            
         }
+        connection.close();
         return customer;
     }
     // thêm mới dữ liệu
-    public boolean insertCustomer(Customer c) {
+    public boolean insertCustomer(Customer c) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "INSERT INTO customer VALUES(?,?,?,?,?,?,?,true)";
         try {
@@ -89,11 +91,13 @@ public class CustomerDAO {
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            connection.close();
         }
         return false;
     }
       // cập nhật dữ liệu
-    public boolean updateCustomer(Customer c) {
+    public boolean updateCustomer(Customer c) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "UPDATE customer SET Name = ?,Username=?,Password=?,Phone=?,Address=?,Email=?,Status=? WHERE ID_Customer = ?";
         try {
@@ -109,11 +113,13 @@ public class CustomerDAO {
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            connection.close();
         }
         return false;
     }
      // xóa dữ liệu
-    public boolean deleteCustomer(long customer_id) {
+    public boolean deleteCustomer(long customer_id) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "DELETE FROM customer WHERE ID_Customer = ?";
         try {
@@ -122,6 +128,8 @@ public class CustomerDAO {
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            connection.close();
         }
         return false;
     }

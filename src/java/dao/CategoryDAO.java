@@ -35,6 +35,7 @@ public class CategoryDAO {
             category.setCategoryName(rs.getString("Name"));
             list.add(category);
         }
+        connection.close();
         return list;
     }
      // get danh sách thể loại tồn tại true
@@ -50,6 +51,7 @@ public class CategoryDAO {
             category.setCategoryName(rs.getString("Name"));
             list.add(category);
         }
+        connection.close();
         return list;
     }
 
@@ -71,11 +73,12 @@ public class CategoryDAO {
                 category.setCategorySt(true);
             }
         }
+        connection.close();
         return category;
     }
 
     // thêm mới dữ liệu
-    public boolean insertCategory(Category c) {
+    public boolean insertCategory(Category c) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "INSERT INTO product_category VALUES(?,?,true)";
         try {
@@ -86,12 +89,14 @@ public class CategoryDAO {
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            connection.close();
         }
         return false;
     }
 
     // cập nhật dữ liệu
-    public boolean updateCategory(Category c) {
+    public boolean updateCategory(Category c) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "UPDATE product_category SET Name = ?,Status=? WHERE ID_Category = ?";
         try {
@@ -102,12 +107,14 @@ public class CategoryDAO {
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            connection.close();
         }
         return false;
     }
 
     // xóa dữ liệu
-    public boolean deleteCategory(long category_id) {
+    public boolean deleteCategory(long category_id) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "DELETE FROM product_category WHERE ID_Category = ?";
         try {
@@ -116,18 +123,20 @@ public class CategoryDAO {
             return ps.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            connection.close();
         }
         return false;
     }
 
     public static void main(String[] args) throws SQLException {
         CategoryDAO dao = new CategoryDAO();
-        //dao.insertCategory(new Category(new Date().getTime(), "ahih"));
-        for (Category ds : dao.getListCategory()) {
-            System.out.println(ds.getCategoryID() + " - " + ds.getCategoryName());
-            //System.out.println(dao.deleteCategory(4));
-            Category ds1 = dao.getCategory(1);
-            System.out.println(ds1.getCategoryID() + " - " + ds1.getCategoryName() + " - " + String.valueOf(ds1.getCategorySt()));
-        }
+        dao.insertCategory(new Category(new Date().getTime(), "ahih",true));
+//        for (Category ds : dao.getListCategory()) {
+//            System.out.println(ds.getCategoryID() + " - " + ds.getCategoryName());
+//            //System.out.println(dao.deleteCategory(4));
+//            Category ds1 = dao.getCategory(1);
+//            System.out.println(ds1.getCategoryID() + " - " + ds1.getCategoryName() + " - " + String.valueOf(ds1.getCategorySt()));
+//        }
     }
 }
