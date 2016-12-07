@@ -128,17 +128,21 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
+                    
                     <li class="active">
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="suathongtin.jsp"><i class="fa fa-fw fa-edit"></i> Thông tin Website</a>
                     </li>
                      <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i>Loại SP<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo1" class="collapse">
                             <li>
-                                <a href="themcategory.jsp">Thêm loại mới</a>
+                                <a href="themcategory.jsp"><span class="glyphicon glyphicon-plus-sign"></span> Thêm loại mới</a>
                             </li>
                             <li>
-                                <a href="quanlycategory.jsp">Danh sách loại</a>
+                                <a href="quanlycategory.jsp"><span class="glyphicon glyphicon-th-list"></span> Danh sách loại</a>
                             </li>
                         </ul>
                     </li>
@@ -146,13 +150,13 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i>Sản phẩm<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
                             <li>
-                                <a href="themproduct.jsp">Thêm SP mới</a>
+                                <a href="themproduct.jsp"><span class="glyphicon glyphicon-plus-sign"></span> Thêm SP mới</a>
                             </li>
                             <li>
-                                <a href="quanlyproduct.jsp?pages=1">Danh sách sản phẩm</a>
+                                <a href="quanlyproduct.jsp?pages=1"><span class="glyphicon glyphicon-th-list"></span> Danh sách sản phẩm</a>
                             </li>
                             <li>
-                                <a href="sanphamnew.jsp?pages=1">Sản phẩm Mới</a>
+                                <a href="sanphamnew.jsp?pages=1"><span class="glyphicon glyphicon-fire"></span> Sản phẩm Mới</a>
                             </li>
                         </ul>
                     </li>
@@ -160,16 +164,14 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i>Khách hàng<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo3" class="collapse">
                             <li>
-                                <a href="themcustomer.jsp">Thêm khách hàng</a>
+                                 <a href="themcustomer.jsp"><span class="glyphicon glyphicon-plus-sign"></span> Thêm khách hàng</a>
                             </li>
                             <li>
-                                <a href="quanlycustomer.jsp">Danh sách sàn phẩm</a>
+                                <a href="quanlycustomer.jsp"><span class="glyphicon glyphicon-user"></span> Danh sách khách hàng</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                    </li>
+                    
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
                     </li>

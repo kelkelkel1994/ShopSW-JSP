@@ -5,7 +5,9 @@
  */
 package controller;
 
+import com.oreilly.servlet.MultipartRequest;
 import dao.ImformationDAO;
+import java.io.File;
 import java.io.IOException;
 import static java.lang.System.out;
 import javax.servlet.ServletException;
@@ -35,24 +37,42 @@ ImformationDAO informationDAO=new ImformationDAO();
             throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        String command = request.getParameter("command");
-        String logo = request.getParameter("tenLogo");
-        String hotline = request.getParameter("tenHotline");
-        String facebook = request.getParameter("tenFacebook");
-        String facebooklink = request.getParameter("tenLinkFacebook");
-        String timeopen = request.getParameter("tenTimeopen");
-        String address = request.getParameter("tenAddress");
-        String email = request.getParameter("tenEmail");
-        String sitename = request.getParameter("tenSitename");
-        String mota = request.getParameter("tenMota");
-        String icon = request.getParameter("tenIcon");
-        String keyword = request.getParameter("tenKeyword");
-        String googleapi = request.getParameter("tenGoogle");
-        String xgoogle = request.getParameter("tenXGoogle");
-        String ygoogle = request.getParameter("tenYGoogle");
-        boolean sthot=Boolean.valueOf(request.getParameter("trangthaiHot"));
-        boolean stnew=Boolean.valueOf(request.getParameter("trangthaiNew"));
-        boolean sttopweek=Boolean.valueOf(request.getParameter("trangthaiTopWeek"));
+        MultipartRequest multi = new MultipartRequest(request, ".", 10 * 1024 * 1024, "UTF-8");
+        String command = multi.getParameter("command");
+                String logo = null;
+                String icon = null;
+                File file = multi.getFile("logo12");
+                File file1 = multi.getFile("icon12");
+                String myfolderb = getServletContext().getRealPath("upload") + "\\";
+                if (file == null) {
+                    logo = multi.getParameter("tenLogo");
+                } else {
+                    logo = file.getName();
+                    file.renameTo(new File(myfolderb, file.getName()));
+                }
+                if (file1 == null) {
+                    icon = multi.getParameter("tenIcon");
+                } else {
+                    icon = file.getName();
+                    file1.renameTo(new File(myfolderb, file1.getName()));
+                }
+        //String logo = multi.getParameter("tenLogo");
+        String hotline = multi.getParameter("tenHotline");
+        String facebook = multi.getParameter("tenFacebook");
+        String facebooklink = multi.getParameter("tenLinkFacebook");
+        String timeopen = multi.getParameter("tenTimeopen");
+        String address = multi.getParameter("tenAddress");
+        String email = multi.getParameter("tenEmail");
+        String sitename = multi.getParameter("tenSitename");
+        String mota = multi.getParameter("tenMota");
+        //String icon = multi.getParameter("tenIcon");
+        String keyword = multi.getParameter("tenKeyword");
+        String googleapi = multi.getParameter("tenGoogle");
+        String xgoogle = multi.getParameter("tenXGoogle");
+        String ygoogle = multi.getParameter("tenYGoogle");
+        boolean sthot=Boolean.valueOf(multi.getParameter("trangthaiHot"));
+        boolean stnew=Boolean.valueOf(multi.getParameter("trangthaiNew"));
+        boolean sttopweek=Boolean.valueOf(multi.getParameter("trangthaiTopWeek"));
         try {
             
                 switch (command) {
@@ -68,13 +88,6 @@ ImformationDAO informationDAO=new ImformationDAO();
   
         response.sendRedirect("admin/suathongtin.jsp");
 
-        
-        //RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-        //rd.forward(request, response);
-        //request.setAttribute("alertMsg", "Sửa thành công");
-       // RequestDispatcher rd=request.getRequestDispatcher("admin/suathongtin.jsp");  
-        //rd.include(request, response);
-//        processRequest(request, response);
     }
 
   

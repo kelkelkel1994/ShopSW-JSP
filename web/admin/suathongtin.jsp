@@ -59,7 +59,7 @@
                         <div class="col-lg-2"></div>
                         <div class="col-lg-8">
 
-                            <form action="/ShopSW/ManagerInfomationServlet" method="post" role="form">
+                            <form action="/ShopSW/ManagerInfomationServlet" method="post" enctype="multipart/form-data">
 
                                 <div class="panel panel-success" >
                                     <div class="panel-heading">
@@ -70,12 +70,13 @@
                                             <div class="panel-body">
                                                 <div class="form-group">
                                                     <label>Logo</label>
-                                                    <input type="text" class="form-control" name="tenLogo" value="<%=c.getLogo()%>">
+                                                     <input type="file" class="form-control" name="logo12">
+                                                    <input type="text" class="form-control" name="tenLogo" value="<%=c.getLogo()%>"readonly>
                                             </div>
                                             <div class="form-group">
                                                     <label>Icon</label>
-                                                    <input type="text" class="form-control" name="tenIcon" value="<%=c.getIcon()%>">
-                                            </div>
+                                                     <input type="file" class="form-control" name="icon12">
+                                                     <input type="text" class="form-control" name="tenIcon" value="<%=c.getIcon()%>"readonly>                                            </div>
                                             <div class="form-group">
                                                 <label>Hotline</label>
                                                 <input type="text" class="form-control" name="tenHotline" value="<%=c.getHotline()%>">
@@ -145,7 +146,7 @@
                                 <input type="hidden" name="command" value="update">
                                 <input type="hidden" name="ID_Information" value="1">
                                 <input type="submit" class="btn btn-default" value="Lưu dữ liệu" >
-                                <a href="${root}/admin/quanlycategory.jsp"  class="btn btn-default">Hủy bỏ</a>
+                                <a href="${root}/admin/quanlyproduct.jsp?pages=1"  class="btn btn-default">Hủy bỏ</a>
 
                             </div>
 

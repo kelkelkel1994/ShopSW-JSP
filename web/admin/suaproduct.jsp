@@ -31,7 +31,7 @@
         <!-- Custom Fonts -->
         <link href="${root}/admin/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Thêm Sản phẩm mới</title>
+        <title>Sưa sản phẩm</title>
 
 
     </head>
