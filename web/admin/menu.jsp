@@ -156,7 +156,13 @@
                                 <a href="quanlyproduct.jsp?pages=1"><span class="glyphicon glyphicon-th-list"></span> Danh sách sản phẩm</a>
                             </li>
                             <li>
-                                <a href="sanphamnew.jsp?pages=1"><span class="glyphicon glyphicon-fire"></span> Sản phẩm Mới</a>
+                                <a href="sanphamnew.jsp?pages=1"><span class="glyphicon glyphicon-leaf"></span> Sản phẩm Mới</a>
+                            </li>
+                            <li>
+                                <a href="sanphamhot.jsp?pages=1"><span class="glyphicon glyphicon-fire"></span> Sản phẩm Hot</a>
+                            </li>
+                            <li>
+                                <a href="sanphamkhuyenmai.jsp?pages=1"><span class="glyphicon glyphicon-gift"></span> Sản phẩm Khuyến mãi</a>
                             </li>
                         </ul>
                     </li>

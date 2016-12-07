@@ -3,7 +3,7 @@
     Created on : Dec 7, 2016, 12:36:20 AM
     Author     : SONPC
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.Category"%>
 <%@page import="dao.CategoryDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -21,16 +21,16 @@
     <c:set var="root" value="${pageContext.request.contextPath}"/>
 
     <!-- Bootstrap Core CSS -->
-    <link href="${root}/ShopSW/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${root}/admin/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="${root}/ShopSW/admin/css/sb-admin.css" rel="stylesheet">
+    <link href="${root}/admin/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="${root}/ShopSW/admin/css/plugins/morris.css" rel="stylesheet">
+    <link href="${root}/admin/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="${root}/ShopSW/admin/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${root}/admin/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Quản Lý sản phẩm</title>
 </head>
@@ -69,7 +69,7 @@
             </div>
             <div id="page-wrapper">
 
-                <a href="${root}/ShopSW/admin/themproduct.jsp">Thêm sản phẩm mới</a>
+                <a href="${root}/admin/themproduct.jsp">Thêm sản phẩm mới</a>
             <div class="row">
 
                 <div class="col-lg-12">
@@ -123,8 +123,8 @@
 
                         <td >
                         <center>
-                            <a href="${root}/ShopSW/admin/suaproduct.jsp?command=update&ID_Product=<%=product.getProductID()%>">Sửa</a>&nbsp;|
-                            <a href="${root}/ShopSW/ManagerProductServlet?command=delete&ID_Product=<%=product.getProductID()%>">Xóa</a>
+                            <a href="${root}/admin/suaproduct.jsp?command=update&ID_Product=<%=product.getProductID()%>">Sửa</a>&nbsp;|
+                            <a href="${root}/ManagerProductServlet?command=delete&ID_Product=<%=product.getProductID()%>">Xóa</a>
                         </center>
                         </td>
                         </tr>

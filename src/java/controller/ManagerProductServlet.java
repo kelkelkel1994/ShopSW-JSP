@@ -45,7 +45,7 @@ public class ManagerProductServlet extends HttpServlet {
 
                 case "delete":
                     productDAO.deleteProduct(Long.parseLong(product_id));
-                    url = "admin/quanlyproduct.jsp";
+                    url = "admin/quanlyproduct.jsp?pages=1";
                     break;
             }
         } catch (Exception e) {
@@ -214,6 +214,6 @@ public class ManagerProductServlet extends HttpServlet {
                 break;
         }
 
-        response.sendRedirect("admin/quanlyproduct.jsp");
+        response.sendRedirect("admin/quanlyproduct.jsp?pages=1");
     }
 }
