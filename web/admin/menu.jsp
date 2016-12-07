@@ -149,7 +149,10 @@
                                 <a href="themproduct.jsp">Thêm SP mới</a>
                             </li>
                             <li>
-                                <a href="quanlyproduct.jsp">Danh sách sàn phẩm</a>
+                                <a href="quanlyproduct.jsp?pages=1">Danh sách sản phẩm</a>
+                            </li>
+                            <li>
+                                <a href="sanphamnew.jsp?pages=1">Sản phẩm Mới</a>
                             </li>
                         </ul>
                     </li>

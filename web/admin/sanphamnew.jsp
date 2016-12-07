@@ -1,13 +1,13 @@
 <%-- 
-    Document   : quanlyproduct
-    Created on : Dec 3, 2016, 10:37:25 PM
+    Document   : sanphamnew
+    Created on : Dec 7, 2016, 12:36:20 AM
     Author     : SONPC
 --%>
 
-<%@page import="dao.CategoryDAO"%>
 <%@page import="model.Category"%>
-<%@page import="model.Product"%>
+<%@page import="dao.CategoryDAO"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="model.Product"%>
 <%@page import="dao.ProductDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
             if (request.getParameter("pages") != null) {
                 pages = (int) Integer.parseInt(request.getParameter("pages"));
             }
-             total = productDAO.countSanPham();
+             total = productDAO.countSanPhamMoi();
             if (total <= 10) {
                 firstResult = 1;
                 maxResult = total;
@@ -49,7 +49,7 @@
                 firstResult = (pages - 1) * 10;
                 maxResult = 10;
             }
-        ArrayList<Product> listProduct = productDAO.getListProduct(firstResult, maxResult);
+        ArrayList<Product> listProduct = productDAO.getListProductNew(firstResult,maxResult);
     %>
     <div id="wrapper">
 
@@ -63,7 +63,7 @@
                         <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
                     </li>
                     <li class="active">
-                        <i class="fa fa-table"></i> Danh sách sản phẩm
+                        <i class="fa fa-table"></i> Danh sách sản phẩm Mới
                     </li>
                 </ol>
             </div>
@@ -107,27 +107,20 @@
                         <td><center><%=product.getProductPromotionPrice()%></center></td>
                         <td><center><%=product.getProductShortDescription()%></center></td>
                         <td><center><%=product.getProductImagesFeature()%></center></td>
-                        <td><center><%
-                            if (product.getProductSt() == true) {
-                            %>
-                            <fieldset id="<%=count%>">
-                                <label class="radio-inline">
-                                    <input type="radio" name="<%=count%>"  checked>Hiện
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="<%=count%>"   >Ẩn
-                                </label>
-                            </fieldset>
-                            <%} else {%>
-                            <fieldset id="<%=count%>">
-                                <label class="radio-inline">
-                                    <input type="radio" name="<%=count%>"  >Hiện
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="<%=count%>"checked >Ẩn
-                                </label>
-                            </fieldset>
-                            <%}%></center></td>
+                        <td>
+
+
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="trangthaiNew" value="true" <%if (product.getProductStNew() == true) {%>checked<%}%>>Mới
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="trangthaiSanPham" value="true" <%if (product.getProductSt() == true) {%>checked<%}%>>Trạng thái mở
+                            </label>
+
+
+
+                        </td>
+
                         <td >
                         <center>
                             <a href="${root}/ShopSW/admin/suaproduct.jsp?command=update&ID_Product=<%=product.getProductID()%>">Sửa</a>&nbsp;|
@@ -138,18 +131,16 @@
                         <%}%>
 
                     </table>
-                       
                 </div>
-                       
             </div>
         </div>
                         <div id="page-wrapper">
                             <div class="container-fluid">
-                                <a <%if(pages-1<1){%> href="#"<%}else%>href="quanlyproduct.jsp?pages=<%=pages-1%>" class="btn btn-default" ><<</a>
+                                <a <%if(pages-1<1){%> href="#"<%}else%>href="sanphamnew.jsp?pages=<%=pages-1%>" class="btn btn-default" ><<</a>
                                  <%for(int i=1;i<=(total/10)+1;i++){%>
-                        <a href="quanlyproduct.jsp?pages=<%=i%>" class="btn btn-default"><%=i%></a>
+                        <a href="sanphamnew.jsp?pages=<%=i%>" class="btn btn-default"><%=i%></a>
                         <%}%>
-                   <a <%if(pages+1>(total/10)){%> href="#"<%}else%>href="quanlyproduct.jsp?pages=<%=pages+1%>" class="btn btn-default">>></a>
+                   <a <%if(pages+1>(total/10)){%> href="#"<%}else%>href="sanphamnew.jsp?pages=<%=pages+1%>" class="btn btn-default">>></a>
                             </div>
                    
                     </div>
