@@ -36,6 +36,7 @@
 </head>
 <body>
     <%
+        String url=request.getRequestURI()+"?"+request.getQueryString();
         ProductDAO productDAO = new ProductDAO();
         int pages = 0, firstResult = 0, maxResult = 0, total = 0;
             if (request.getParameter("pages") != null) {
@@ -60,7 +61,7 @@
                 </h1>
                 <ol class="breadcrumb">
                     <li>
-                        <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                        <i class="fa fa-dashboard"></i>  <a href="index.jsp">Dashboard</a>
                     </li>
                     <li class="active">
                         <i class="fa fa-table"></i> Danh sách sản phẩm Mới
@@ -96,7 +97,7 @@
                                 Category c = categoryDAO.getCategory(product.getCategoryID());
                         %>
 
-                        <tr >
+                        <tr <%if(product.getProductSt() == false){%>class="danger"<%}%>>
 
                             <td >                    <center>
                             <%=count%></center></td>
@@ -123,11 +124,15 @@
 
                         <td >
                         <center>
+                            <%if (product.getProductSt() == true) {%>
                             <a href="${root}/admin/suaproduct.jsp?command=update&ID_Product=<%=product.getProductID()%>">Sửa</a>&nbsp;|
-                            <a href="${root}/ManagerProductServlet?command=delete&ID_Product=<%=product.getProductID()%>">Xóa</a>
+                            <a href="${root}/ManagerProductServlet?command=delete&ID_Product=<%=product.getProductID()%>&URL1204=<%=url%>">Xóa</a>
+                            <%} else {%>
+                            <a href="${root}/ManagerProductServlet?command=khoiphuc&ID_Product=<%=product.getProductID()%>&URL1204=<%=url%>">Khôi phục</a>
+                            <%}%>
                         </center>
-                        </td>
-                        </tr>
+                    </td>
+                    </tr>
                         <%}%>
 
                     </table>

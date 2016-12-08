@@ -36,6 +36,7 @@
 </head>
 <body>
     <%
+         String url=request.getRequestURI()+"?"+request.getQueryString();
         ProductDAO productDAO = new ProductDAO();
         int pages = 0, firstResult = 0, maxResult = 0, total = 0;
             if (request.getParameter("pages") != null) {
@@ -96,7 +97,7 @@
                                 Category c = categoryDAO.getCategory(product.getCategoryID());
                         %>
 
-                        <tr >
+                        <tr <%if(product.getProductSt() == false){%>class="danger"<%}%>>
 
                             <td >                    <center>
                             <%=count%></center></td>
@@ -123,8 +124,12 @@
 
                         <td >
                         <center>
+                           <%if (product.getProductSt() == true) {%>
                             <a href="${root}/admin/suaproduct.jsp?command=update&ID_Product=<%=product.getProductID()%>">Sửa</a>&nbsp;|
-                            <a href="${root}/ManagerProductServlet?command=delete&ID_Product=<%=product.getProductID()%>">Xóa</a>
+                            <a href="${root}/ManagerProductServlet?command=delete&ID_Product=<%=product.getProductID()%>&URL1204=<%=url%>">Xóa</a>
+                            <%} else {%>
+                            <a href="${root}/ManagerProductServlet?command=khoiphuc&ID_Product=<%=product.getProductID()%>&URL1204=<%=url%>">Khôi phục</a>
+                            <%}%>
                         </center>
                         </td>
                         </tr>
@@ -136,11 +141,11 @@
         </div>
                         <div id="page-wrapper">
                             <div class="container-fluid">
-                                <a <%if(pages-1<1){%> href="#"<%}else%>href="sanphamnew.jsp?pages=<%=pages-1%>" class="btn btn-default" ><<</a>
+                                <a <%if(pages-1<1){%> href="#"<%}else%>href="sanphamkhuyenmai.jsp?pages=<%=pages-1%>" class="btn btn-default" ><<</a>
                                  <%for(int i=1;i<=(total/5)+1;i++){%>
-                        <a href="sanphamnew.jsp?pages=<%=i%>" class="btn btn-default"><%=i%></a>
+                        <a href="sanphamkhuyenmai.jsp?pages=<%=i%>" class="btn btn-default"><%=i%></a>
                         <%}%>
-                   <a <%if(pages+1>(total/5)){%> href="#"<%}else%>href="sanphamnew.jsp?pages=<%=pages+1%>" class="btn btn-default">>></a>
+                   <a <%if(pages+1>(total/5)){%> href="#"<%}else%>href="sanphamkhuyenmai.jsp?pages=<%=pages+1%>" class="btn btn-default">>></a>
                             </div>
                    
                     </div>

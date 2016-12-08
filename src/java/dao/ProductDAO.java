@@ -304,6 +304,76 @@ public class ProductDAO {
         connection.close();
         return list;
     }
+    //cout sp xoá
+     public  int countSanPhamXoa()throws SQLException{
+        Connection connection = DBConnect.getConnection();
+        String sql = "SELECT count(ID_Product) FROM product WHERE Status=FALSE";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        int count=0;
+        while (rs.next()) {
+        count=rs.getInt(1);
+        }
+        connection.close();
+        return count;
+    }
+    // get danh sách sản phẩm đã xoá
+    public ArrayList<Product> getListProductXoa(int firstResult, int maxResult) throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "SELECT * FROM product WHERE Status=FALSE limit ?,?";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ps.setInt(1, firstResult);
+        ps.setInt(2, maxResult);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<Product> list = new ArrayList<>();
+        while (rs.next()) {
+            Product product = new Product();
+            product.setProductID(rs.getLong("ID_Product"));
+            product.setCategoryID(rs.getLong("ID_Category"));
+            product.setProductName(rs.getString("Name"));
+            product.setProductPrite(rs.getLong("Price"));
+            product.setProductPromotionPrice(rs.getLong("PromotionPrice"));
+            product.setProductShortDescription(rs.getString("ShortDescription"));
+            product.setProductDescription(rs.getString("Description"));
+            product.setProductImagesFeature(rs.getString("ImagesFeature"));
+            product.setProductSubImages1(rs.getString("Subimage1"));
+            product.setProductSubImages2(rs.getString("Subimage2"));
+            if (Integer.parseInt(rs.getString("StatusPromotion")) == 0) {
+                product.setProductStPromotion(false);
+            } else {
+                product.setProductStPromotion(true);
+            }
+            if (Integer.parseInt(rs.getString("StatusHot")) == 0) {
+                product.setProductStHot(false);
+            } else {
+                product.setProductStHot(true);
+            }
+            if (Integer.parseInt(rs.getString("StatusTop")) == 0) {
+                product.setProductStTop(false);
+            } else {
+                product.setProductStTop(true);
+            }
+            if (Integer.parseInt(rs.getString("StatusNew")) == 0) {
+                product.setProductStNew(false);
+            } else {
+                product.setProductStNew(true);
+            }
+            if (Integer.parseInt(rs.getString("StatusTopWeek")) == 0) {
+                product.setProductStTopWeek(false);
+            } else {
+                product.setProductStTopWeek(true);
+            }
+            if (Integer.parseInt(rs.getString("Status")) == 0) {
+                product.setProductSt(false);
+            } else {
+                product.setProductSt(true);
+            }
+            list.add(product);
+
+        }
+        connection.close();
+        return list;
+    }
 
     // get 1 1sản phẩm
     public Product getProduct(long product_id) throws SQLException {
@@ -425,7 +495,32 @@ public class ProductDAO {
         }
         return false;
     }
-
+  // xóa dữ liệu
+    public boolean deleteProductAn(long product_id) {
+        Connection connection = DBConnect.getConnection();
+        String sql = "UPDATE product SET Status= FALSE WHERE ID_Product = ?;";
+        try {
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setLong(1, product_id);
+            return ps.executeUpdate() == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    // phuc hồi dữ liệu
+    public boolean khoiphucProduct(long product_id) {
+        Connection connection = DBConnect.getConnection();
+        String sql = "UPDATE product SET Status= TRUE WHERE ID_Product = ?;";
+        try {
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setLong(1, product_id);
+            return ps.executeUpdate() == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     // xóa dữ liệu
     public boolean deleteProduct(long product_id) {
         Connection connection = DBConnect.getConnection();

@@ -36,6 +36,9 @@
 </head>
 <body>
     <%
+//        String url= request.getRequestURI();
+//        String url1= request.getQueryString();
+        String url=request.getRequestURI()+"?"+request.getQueryString();
         ProductDAO productDAO = new ProductDAO();
         int pages = 0, firstResult = 0, maxResult = 0, total = 0;
             if (request.getParameter("pages") != null) {
@@ -73,6 +76,7 @@
             <div class="row">
 
                 <div class="col-lg-12">
+                  
                     <table class="table table-bordered table-hover">
 
                         <tr >
@@ -96,7 +100,7 @@
                                 Category c = categoryDAO.getCategory(product.getCategoryID());
                         %>
 
-                        <tr >
+                        <tr <%if(product.getProductSt() == false){%>class="danger"<%}%>>
 
                             <td >                    <center>
                             <%=count%></center></td>
@@ -111,10 +115,10 @@
 
 
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="trangthaiHot" value="true" <%if (product.getProductStHot()== true) {%>checked<%}%>>Hot
+                                <input type="checkbox" name="trangthaiHot" value="true" disabled="" <%if (product.getProductStHot()== true) {%>checked<%}%>>Hot
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="trangthaiSanPham" value="true" <%if (product.getProductSt() == true) {%>checked<%}%>>Trạng thái mở
+                                <input type="checkbox" name="trangthaiSanPham" value="true" disabled="" <%if (product.getProductSt() == true) {%>checked<%}%>>Trạng thái mở
                             </label>
 
 
@@ -123,8 +127,13 @@
 
                         <td >
                         <center>
+                           <%if(product.getProductSt() == true){%>
                             <a href="${root}/admin/suaproduct.jsp?command=update&ID_Product=<%=product.getProductID()%>">Sửa</a>&nbsp;|
-                            <a href="${root}/ManagerProductServlet?command=delete&ID_Product=<%=product.getProductID()%>">Xóa</a>
+                            <a href="${root}/ManagerProductServlet?command=delete&ID_Product=<%=product.getProductID()%>&URL1204=<%=url%>">Xóa</a>
+                            <%}else{%>
+                              <input type="hidden" value="<%=url%>" name="url1204">
+                            <a href="${root}/ManagerProductServlet?command=khoiphuc&ID_Product=<%=product.getProductID()%>&URL1204=<%=url%>">Khôi phục</a>
+                            <%}%>
                         </center>
                         </td>
                         </tr>
@@ -136,11 +145,11 @@
         </div>
                         <div id="page-wrapper">
                             <div class="container-fluid">
-                                <a <%if(pages-1<1){%> href="#"<%}else%>href="sanphamnew.jsp?pages=<%=pages-1%>" class="btn btn-default" ><<</a>
+                                <a <%if(pages-1<1){%> href="#"<%}else%>href="sanphamhot.jsp?pages=<%=pages-1%>" class="btn btn-default" ><<</a>
                                  <%for(int i=1;i<=(total/10)+1;i++){%>
-                        <a href="sanphamnew.jsp?pages=<%=i%>" class="btn btn-default"><%=i%></a>
+                        <a href="sanphamhot.jsp?pages=<%=i%>" class="btn btn-default"><%=i%></a>
                         <%}%>
-                   <a <%if(pages+1>(total/10)){%> href="#"<%}else%>href="sanphamnew.jsp?pages=<%=pages+1%>" class="btn btn-default">>></a>
+                   <a <%if(pages+1>(total/10)){%> href="#"<%}else%>href="sanphamhot.jsp?pages=<%=pages+1%>" class="btn btn-default">>></a>
                             </div>
                    
                     </div>

@@ -1,8 +1,9 @@
 <%-- 
-    Document   : quanlyproduct
-    Created on : Dec 3, 2016, 10:37:25 PM
+    Document   : sanphamxoa
+    Created on : Dec 9, 2016, 2:31:27 AM
     Author     : SONPC
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="dao.CategoryDAO"%>
 <%@page import="model.Category"%>
@@ -42,7 +43,7 @@
             if (request.getParameter("pages") != null) {
                 pages = (int) Integer.parseInt(request.getParameter("pages"));
             }
-             total = productDAO.countSanPham();
+             total = productDAO.countSanPhamXoa();
             if (total <= 20) {
                 firstResult = 1;
                 maxResult = total;
@@ -50,7 +51,7 @@
                 firstResult = (pages - 1) * 20;
                 maxResult = 20;
             }
-        ArrayList<Product> listProduct = productDAO.getListProduct(firstResult, maxResult);
+        ArrayList<Product> listProduct = productDAO.getListProductXoa(firstResult, maxResult);
     %>
     <div id="wrapper">
 
@@ -61,10 +62,10 @@
                 </h1>
                 <ol class="breadcrumb">
                     <li>
-                        <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                        <i class="fa fa-dashboard"></i>  <a href="index.jsp">Dashboard</a>
                     </li>
                     <li class="active">
-                        <i class="fa fa-table"></i> Danh sách sản phẩm
+                        <i class="fa fa-table"></i> Danh sách sản phẩm đã xoá
                     </li>
                 </ol>
             </div>
@@ -150,11 +151,11 @@
         </div>
                         <div id="page-wrapper">
                             <div class="container-fluid">
-                                <a <%if(pages-1<1){%> href="#"<%}else%> href="quanlyproduct.jsp?pages=<%=pages-1%>" class="btn btn-default" ><<</a>
+                                <a <%if(pages-1<1){%> href="#"<%}else%> href="sanphamxoa.jsp?pages=<%=pages-1%>" class="btn btn-default" ><<</a>
                                  <%for(int i=1;i<=(total/20)+1;i++){%>
-                        <a href="quanlyproduct.jsp?pages=<%=i%>" class="btn btn-default"><%=i%></a>
+                        <a href="sanphamxoa.jsp?pages=<%=i%>" class="btn btn-default"><%=i%></a>
                         <%}%>
-                   <a <%if(pages+1>(total/20)){%> href="#"<%}else%>href="quanlyproduct.jsp?pages=<%=pages+1%>" class="btn btn-default">>></a>
+                   <a <%if(pages+1>(total/20)){%> href="#"<%}else%>href="sanphamxoa.jsp?pages=<%=pages+1%>" class="btn btn-default">>></a>
                             </div>
                    
                     </div>

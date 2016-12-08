@@ -39,13 +39,16 @@ public class ManagerProductServlet extends HttpServlet {
         String command = request.getParameter("command");
         String product_id = request.getParameter("ID_Product");
 
-        String url = "";
+        String url = request.getParameter("URL1204");
         try {
             switch (command) {
-
                 case "delete":
-                    productDAO.deleteProduct(Long.parseLong(product_id));
-                    url = "admin/quanlyproduct.jsp?pages=1";
+                    productDAO.deleteProductAn(Long.parseLong(product_id));
+                    //url = "admin/quanlyproduct.jsp?pages=1";
+                    break;
+                case "khoiphuc":
+                    productDAO.khoiphucProduct(Long.parseLong(product_id));
+                    //url = "admin/quanlyproduct.jsp?pages=1";
                     break;
             }
         } catch (Exception e) {

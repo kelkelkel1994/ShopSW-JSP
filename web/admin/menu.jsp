@@ -128,17 +128,23 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    
+
                     <li class="active">
                         <a href="index.jsp"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="suathongtin.jsp"><i class="fa fa-fw fa-edit"></i> Thông tin Website</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo4"><i class="fa fa-fw fa-arrows-v"></i>Website<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo4" class="collapse">
+                            <li>
+                                <a href="suathongtin.jsp"><i class="fa fa-fw fa-edit"></i> Thông tin Website</a>
+                            </li>
+                            <li>
+                                <a href="quanlyslider.jsp"><i class="fa fa-fw fa-edit"></i> Slide</a>
+                            </li>
+                        </ul>
                     </li>
+
                     <li>
-                        <a href="suaslide.jsp"><i class="fa fa-fw fa-edit"></i> Slide</a>
-                    </li>
-                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i>Loại SP<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo1" class="collapse">
                             <li>
@@ -167,20 +173,23 @@
                             <li>
                                 <a href="sanphamkhuyenmai.jsp?pages=1"><span class="glyphicon glyphicon-gift"></span> Sản phẩm Khuyến mãi</a>
                             </li>
+                             <li>
+                                <a href="sanphamxoa.jsp?pages=1"><span class="glyphicon glyphicon-remove"></span> Sản phẩm đã xoá</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i>Khách hàng<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo3" class="collapse">
                             <li>
-                                 <a href="themcustomer.jsp"><span class="glyphicon glyphicon-plus-sign"></span> Thêm khách hàng</a>
+                                <a href="themcustomer.jsp"><span class="glyphicon glyphicon-plus-sign"></span> Thêm khách hàng</a>
                             </li>
                             <li>
                                 <a href="quanlycustomer.jsp"><span class="glyphicon glyphicon-user"></span> Danh sách khách hàng</a>
                             </li>
                         </ul>
                     </li>
-                    
+
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
                     </li>
@@ -213,15 +222,15 @@
         </nav>
 
         <!-- /.container-fluid -->
-    <!-- jQuery Version 1.11.0 -->
-    <script src="js/jquery-1.11.0.js"></script>
+        <!-- jQuery Version 1.11.0 -->
+        <script src="js/jquery-1.11.0.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
+        <!-- Morris Charts JavaScript -->
+        <script src="js/plugins/morris/raphael.min.js"></script>
+        <script src="js/plugins/morris/morris.min.js"></script>
+        <script src="js/plugins/morris/morris-data.js"></script>
     </body>
 </html>
