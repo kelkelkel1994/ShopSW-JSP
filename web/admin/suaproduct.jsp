@@ -18,6 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <c:set var="root" value="${pageContext.request.contextPath}"/>
 
+        <script src="../ckeditor/ckeditor.js" type="text/javascript"></script>
 
         <!-- Bootstrap Core CSS -->
         <link href="${root}/admin/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +32,7 @@
         <!-- Custom Fonts -->
         <link href="${root}/admin/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sưa sản phẩm</title>
+        <title>Sửa sản phẩm</title>
 
 
     </head>
@@ -55,7 +56,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li>
-                            <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                            <i class="fa fa-dashboard"></i>  <a href="index.jsp">Dashboard</a>
                         </li>
                         <li class="active">
                             <i class="fa fa-table"></i> Sửa thông tin sản phẩm
@@ -64,13 +65,14 @@
                 </div>
                 <div id="page-wrapper">
                     <div class="row">
+                        <div class="col-lg-12">
                         <form action="/ShopSW/ManagerProductServlet" method="post" enctype="multipart/form-data">
                             <div class="panel panel-success" >
                                 <div class="panel-heading">
                                     <h3 class="panel-title"> Thông tin sản phẩm</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-5">
                                          <div class="form-group">
                                             <label>Mã sp</label>
                                             <input type="text" class="form-control" name="ID_Product" value="<%=c.getProductID()%>" readonly>
@@ -109,12 +111,6 @@
                                         <input class="form-control" name="motaNgan" value="<%=c.getProductShortDescription()%>">
                                     </div>
                                     <div class="form-group">
-                                        <label>Mô tả</label>
-                                        <textarea class="form-control" name="mota" rows="3" ><%=c.getProductDescription()%></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
                                         <label>Hình đại diện</label>
                                         <input type="file" class="form-control" name="uploadFile"  >
                                         <input class="form-control col-lg-3" type="text" name="anhbia" value="<%=c.getProductImagesFeature()%>" readonly>
@@ -134,6 +130,19 @@
 
 
 
+                                   
+                                </div>
+                                <div class="col-lg-7">
+                                     <div class="form-group">
+                                        <label>Mô tả</label>
+                                        <textarea class="form-control" name="mota" id="noiDung" ><%=c.getProductDescription()%></textarea>
+                                        <script type="text/javascript" language="javascript">
+                                                CKEDITOR.replace('noiDung', {width: '600px', height: '280px'});
+                                            </script>
+                                    </div>
+                                  
+
+                                    
                                     <div class="form-group">
                                         <label>Phân loại</label>
                                         <label class="checkbox-inline">
@@ -158,7 +167,6 @@
                                             <input type="checkbox" name="trangthaiSanPham" value="true" <%if (c.getProductSt() == true) {%>checked<%}%>>Xuất hiện trong menu
                                         </label>
                                     </div>
-                                    
                                     <input type="hidden" name="command" value="update">
                                     <input type="submit" class="btn btn-default" value="Lưu dữ liệu" >
                                     <a href="${root}/admin/quanlyproduct.jsp"  class="btn btn-default">Hủy bỏ</a>
@@ -168,6 +176,7 @@
                         </div> 
                     </form>
                 </div>
+                    </div>
             </div>
         </div>
     </body>

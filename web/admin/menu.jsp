@@ -130,10 +130,13 @@
                 <ul class="nav navbar-nav side-nav">
                     
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="index.jsp"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="suathongtin.jsp"><i class="fa fa-fw fa-edit"></i> Thông tin Website</a>
+                    </li>
+                    <li>
+                        <a href="suaslide.jsp"><i class="fa fa-fw fa-edit"></i> Slide</a>
                     </li>
                      <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-fw fa-arrows-v"></i>Loại SP<i class="fa fa-fw fa-caret-down"></i></a>
