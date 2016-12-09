@@ -112,10 +112,10 @@
 
 
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="trangthaiKM" value="true" <%if (product.getProductStPromotion()== true) {%>checked<%}%>>Khuyến mãi
+                                <input type="checkbox" name="trangthaiKM" disabled="" value="true" <%if (product.getProductStPromotion()== true) {%>checked<%}%>>Khuyến mãi
                             </label>
                             <label class="checkbox-inline">
-                                <input type="checkbox" name="trangthaiSanPham" value="true" <%if (product.getProductSt() == true) {%>checked<%}%>>Trạng thái mở
+                                <input type="checkbox" name="trangthaiSanPham" disabled="" value="true" <%if (product.getProductSt() == true) {%>checked<%}%>>Trạng thái mở
                             </label>
 
 

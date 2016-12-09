@@ -191,7 +191,7 @@
                     </li>
 
                     <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                        <a href="danhsachDH.jsp"><i class="fa fa-fw fa-table"></i> Đơn hàng</a>
                     </li>
                     <li>
                         <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>

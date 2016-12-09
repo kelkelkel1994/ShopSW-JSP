@@ -3,6 +3,7 @@
     Created on : Dec 3, 2016, 5:05:33 PM
     Author     : SONPC
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.Customer"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.CustomerDAO"%>
@@ -18,18 +19,18 @@
     <c:set var="root" value="${pageContext.request.contextPath}"/>
 
     <!-- Bootstrap Core CSS -->
-    <link href="${root}/ShopSW/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${root}/admin/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="${root}/ShopSW/admin/css/sb-admin.css" rel="stylesheet">
+    <link href="${root}/admin/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="${root}/ShopSW/admin/css/plugins/morris.css" rel="stylesheet">
+    <link href="${root}/admin/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="${root}/ShopSW/admin/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${root}/admin/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Quản Lý tài khoản khách hàngc</title>
+    <title>Quản Lý tài khoản khách hàng</title>
 </head>
 <body>
     <%
@@ -45,7 +46,7 @@
                 </h1>
                 <ol class="breadcrumb">
                     <li>
-                        <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                        <i class="fa fa-dashboard"></i>  <a href="index.jsp">Dashboard</a>
                     </li>
                     <li class="active">
                         <i class="fa fa-table"></i> Danh sách khách hàng
@@ -54,7 +55,7 @@
             </div>
             <div id="page-wrapper">
 
-                <a href="${root}/ShopSW/admin/themcustomer.jsp">Thêm Khách hàng</a>
+                <a href="${root}/admin/themcustomer.jsp">Thêm Khách hàng</a>
             <div class="row">
 
                 <div class="col-lg-12">
@@ -113,8 +114,8 @@
                             <%}%></center></td>
                         <td >
                         <center>
-                            <a href="${root}/ShopSW/admin/suacustomer.jsp?command=update&ID_Customer=<%=customer.getCustomerID()%>">Sửa</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="${root}/ShopSW/ManagerCustomerServlet?command=delete&ID_Customer=<%=customer.getCustomerID()%>">Xóa</a>
+                            <a href="${root}/admin/suacustomer.jsp?command=update&ID_Customer=<%=customer.getCustomerID()%>">Sửa</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="${root}/ManagerCustomerServlet?command=delete&ID_Customer=<%=customer.getCustomerID()%>">Xóa</a>
                         </center>
                         </td>
                         </tr>
