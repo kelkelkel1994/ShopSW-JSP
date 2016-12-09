@@ -3,7 +3,7 @@
     Created on : Dec 2, 2016, 11:54:57 PM
     Author     : SONPC
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.Category"%>
 <%@page import="dao.CategoryDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,16 +17,16 @@
 
 
     <!-- Bootstrap Core CSS -->
-    <link href="${root}/ShopSW/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${root}/admin/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="${root}/ShopSW/admin/css/sb-admin.css" rel="stylesheet">
+    <link href="${root}/admin/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="${root}/ShopSW/admin/ss/plugins/morris.css" rel="stylesheet">
+    <link href="${root}/admin/ss/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="${root}/ShopSW/admin/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${root}/admin/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Cập nhật danh mục</title>
     <%
@@ -65,11 +65,11 @@
                     <div class="col-lg-4"></div>
                     <div class="col-lg-4">
 
-                        <form action="/ShopSW/ManagerCategoryServlet" method="post" role="form">
+                        <form action="/ManagerCategoryServlet" method="post" role="form">
 
                             <div class="panel panel-success" >
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"> Tên danh mục </label></h3>
+                                    <h3 class="panel-title"> Tên danh mục </h3>
                                 </div>
                                 <div class="panel-body">
                                     <input type="text" class="form-control" name="tenDanhMuc" value="<%=c.getCategoryName()%>"><%=error%>
@@ -98,7 +98,7 @@
                                 <input type="hidden" name="command" value="update">
                                 <input type="hidden" name="ID_Category" value="<%=request.getParameter("ID_Category")%>">
                                 <input type="submit" class="btn btn-default" value="Lưu dữ liệu" >
-                                <a href="${root}/ShopSW/admin/quanlycategory.jsp"  class="btn btn-default">Hủy bỏ</a>
+                                <a href="${root}/admin/quanlycategory.jsp"  class="btn btn-default">Hủy bỏ</a>
                             </div>
                         </div>
 

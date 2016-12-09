@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.CTHD;
 import model.Customer;
 import model.DonHang;
 
@@ -20,7 +21,7 @@ import model.DonHang;
  */
 public class DonHangDAO {
 
-    // get danh sách khách hàng
+    // get danh sách Dơn hàng
     public ArrayList<DonHang> getListDonHang() throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "SELECT\n"
@@ -72,12 +73,45 @@ public class DonHangDAO {
         connection.close();
         return list;
     }
+    
+    // get Chi tiết đơn hàng
+    public ArrayList<CTHD> getListCTHD(long id_dh) throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "SELECT\n"
+                + "order_detail.ID_Product,\n"
+                + "order_detail.ID_Order,\n"
+                + "order_detail.Quanlity,\n"
+                + "order_detail.Subtotal,\n"
+                + "product.`Name`\n"
+                + "FROM\n"
+                + "order_detail\n"
+                + "INNER JOIN product ON order_detail.ID_Product = product.ID_Product\n"
+                + "WHERE\n"
+                + "order_detail.ID_Order = ?";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ps.setLong(1, id_dh);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<CTHD> list = new ArrayList<>();
+        while (rs.next()) {
+            CTHD ct = new CTHD();
+            ct.setIdSanpham(rs.getLong("ID_Product"));
+            ct.setIdHoadon(rs.getLong("ID_Order"));
+            ct.setSoluong(rs.getLong("Quanlity"));
+            ct.setTongcong(rs.getLong("Subtotal"));
+            ct.setTensanpham(rs.getString("Name"));
+            list.add(ct);
+        }
+        connection.close();
+        return list;
+    }
+    
 
     public static void main(String[] args) throws SQLException {
         DonHangDAO dao = new DonHangDAO();
         //dao.insertCategory(new Category(new Date().getTime(), "ahih"));
-        for (DonHang ds : dao.getListDonHang()) {
-            System.out.println(ds.getTenKhach() + " - " + ds.getTinhtrangHD() + " - " + ds.getNgaydat());
+        for (CTHD ds : dao.getListCTHD(1)) {
+            System.out.println(ds.getTensanpham()+ " - " + ds.getSoluong()+ " - " + ds.getTongcong());
         }
+        
     }
 }

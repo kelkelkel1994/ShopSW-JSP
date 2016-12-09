@@ -95,7 +95,7 @@
                         <td><center><% if(dh.getSt()==true){%>Hiện<%}%></center></td>
                         <td >
                         <center>
-                            <a href="${root}/admin/suacustomer.jsp?command=update&ID_Customer=<%=dh.getIdDonhang()%>">Sửa</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="${root}/admin/chitiethoadon.jsp?ID_Order=<%=dh.getIdDonhang()%>">Chi tiết</a>
                             <a href="${root}/ManagerCustomerServlet?command=delete&ID_Customer=<%=dh.getIdDonhang()%>">Xóa</a>
                         </center>
                         </td>
