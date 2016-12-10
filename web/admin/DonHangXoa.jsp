@@ -36,7 +36,7 @@
     <%
         String url = request.getRequestURI() + "?" + request.getQueryString();
         DonHangDAO donhangDAO = new DonHangDAO();
-        ArrayList<DonHang> listDonHang = donhangDAO.getListDonHang();
+        ArrayList<DonHang> listDonHang = donhangDAO.getListDonHangRac();
     %>
     <div id="wrapper">
 
@@ -56,7 +56,7 @@
             </div>
             <div id="page-wrapper">
 
-                <a href="${root}/admin/themdonhang.jsp">Thêm đơn hàng</a>
+                
             <div class="row">
 
                 <div class="col-lg-12">

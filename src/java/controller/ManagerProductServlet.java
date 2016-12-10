@@ -62,7 +62,7 @@ public class ManagerProductServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         MultipartRequest multi = new MultipartRequest(request, ".", 10 * 1024 * 1024, "UTF-8");
-        String command = multi.getParameter("command");
+         String command = multi.getParameter("command");
                 String hinh1b = null;
                 String hinh2b = null;
                 String hinh3b = null;

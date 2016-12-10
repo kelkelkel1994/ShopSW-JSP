@@ -194,7 +194,7 @@
                         <a href="danhsachDH.jsp"><i class="fa fa-fw fa-table"></i> Đơn hàng</a>
                     </li>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                        <a href="DonHangXoa.jsp"><i class="fa fa-fw fa-edit"></i> Đơn hàng đã xoá</a>
                     </li>
                     <li>
                         <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>

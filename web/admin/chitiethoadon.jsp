@@ -83,7 +83,7 @@
                                                 </div>
                                                 <div class="list-group">
                                                     <a href="#" class="list-group-item"> 
-                                                         <i class="fa fa-fw fa-google-plus"></i><%=dh1.getEmailKhach()%>
+                                                        <i class="fa fa-fw fa-google-plus"></i><%=dh1.getEmailKhach()%>
                                                     </a>
 
                                                 </div>
@@ -131,6 +131,35 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-lg-4">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Xử lý</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="list-group">
+                                                    <!--                                                    <a href="#" class="list-group-item">
+                                                                                                            <i class="fa fa-fw"></i> adad
+                                                                                                        </a>-->
+                                                    <button class="btn btn-lg btn-default">dasdas</button>
+                                                </div>
+                                                <div class="list-group">
+                                                    <!--                                                    <a href="#" class="list-group-item"> 
+                                                                                                             <i class="fa fa-fw"></i>dad
+                                                                                                        </a>-->
+                                                    <button class="btn btn-lg btn-default">dadasd</button>
+                                                </div>
+                                                <div class="list-group">
+                                                    <!--                                                    <a href="#" class="list-group-item">
+                                                                                                            <i class="fa fa-fw"></i>dad
+                                                                                                        </a>-->
+                                                    <button class="btn btn-lg btn-default">dasda</button>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
 
@@ -158,7 +187,7 @@
                                 <th >Tên</th>
                                 <th>Số lượng</th>
                                 <th>Giá tiền</th>
-                                <th>Tùy chọn</th>
+                                <!--                                <th>Tùy chọn</th>-->
                             </tr>
 
 
@@ -174,12 +203,12 @@
                             <td><center><%=dh.getTensanpham()%></center></td>
                             <td><center><%=dh.getSoluong()%></center></td>
                             <td><center><%=dh.getTongcong()%></center></td>
-                            <td >
-                            <center>
-                                <a href="${root}/admin/suacategory.jsp?command=update&ID_Category=<%=dh.getIdSanpham()%>">Sửa</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="${root}/ManagerCategoryServlet?command=delete&ID_Category=<%=dh.getIdSanpham()%>">Xóa</a>
-                            </center>
-                            </td>
+                            <!--                            <td >
+                                                        <center>
+                                                            <a href="${root}/admin/suacategory.jsp?command=update&ID_Category=<%=dh.getIdSanpham()%>">Sửa</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <a href="${root}/ManagerCategoryServlet?command=delete&ID_Category=<%=dh.getIdSanpham()%>">Xóa</a>
+                                                        </center>
+                                                        </td>-->
                             </tr>
                             <%}%>
 
