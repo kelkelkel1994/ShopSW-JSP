@@ -3,6 +3,8 @@
     Created on : Dec 9, 2016, 9:47:56 PM
     Author     : SONPC
 --%>
+<%@page import="dao.OrderSttDAO"%>
+<%@page import="model.OrderStt"%>
 <%@page import="model.DonHang"%>
 <%@page import="model.CTHD"%>
 <%@page import="java.util.ArrayList"%>
@@ -54,6 +56,7 @@
                     <div class="row">
                         <div class="col-lg-9">
                         <%
+                            String url = request.getRequestURI() + "?" + request.getQueryString();
                             long id = Long.valueOf(request.getParameter("ID_Order"));
                             DonHangDAO donhangDAO = new DonHangDAO();
                             ArrayList<DonHang> listDonHang = donhangDAO.getListDonHang();
@@ -66,7 +69,7 @@
                                 <%
                                     for (DonHang dh1 : listDonHang) {
                                         if (dh1.getIdDonhang() == id) {
-
+                                            
                                 %>
                                 <div class="row">
                                     <div class="col-lg-4">
@@ -137,24 +140,32 @@
                                                 <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Xử lý</h3>
                                             </div>
                                             <div class="panel-body">
+                                                <%
+                                                    OrderSttDAO orderSttDAO = new OrderSttDAO();
+                                                    ArrayList<OrderStt> liststt = orderSttDAO.getListSTT();
+                                                %>
+                                                <%
+                                                    for (OrderStt loai : liststt) {
+                                                        if (dh1.getIdDonhang() == id) {
+
+                                                %>
                                                 <div class="list-group">
-                                                    <!--                                                    <a href="#" class="list-group-item">
-                                                                                                            <i class="fa fa-fw"></i> adad
-                                                                                                        </a>-->
-                                                    <button class="btn btn-lg btn-default">dasdas</button>
+                                                     <button class="btn btn-lg btn-default" onclick="window.location.href ='${root}/OrderServlet?command=setloai&ID_Orders=<%=id%>&Loai=<%=loai.getValue()%>&URL1204=<%=url%>'" <%if(loai.getValue()==dh1.getIdSuly()){%>disabled<%}%>> <%=loai.getName()%> </button>                                           
+                                                    
                                                 </div>
-                                                <div class="list-group">
-                                                    <!--                                                    <a href="#" class="list-group-item"> 
+                                                <%}}%>
+<!--                                                <div class="list-group">
+                                                                                                        <a href="#" class="list-group-item"> 
                                                                                                              <i class="fa fa-fw"></i>dad
-                                                                                                        </a>-->
+                                                                                                        </a>
                                                     <button class="btn btn-lg btn-default">dadasd</button>
                                                 </div>
                                                 <div class="list-group">
-                                                    <!--                                                    <a href="#" class="list-group-item">
+                                                                                                        <a href="#" class="list-group-item">
                                                                                                             <i class="fa fa-fw"></i>dad
-                                                                                                        </a>-->
+                                                                                                        </a>
                                                     <button class="btn btn-lg btn-default">dasda</button>
-                                                </div>
+                                                </div>-->
 
 
                                             </div>

@@ -5,13 +5,10 @@
  */
 package controller;
 
-import dao.ChartDAO;
+import dao.OrderSttDAO;
+import dao.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,28 +19,28 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author SONPC
  */
-@WebServlet(name = "ChartServlet", urlPatterns = {"/ChartServlet"})
-public class ChartServlet extends HttpServlet {
+@WebServlet(name = "OrderServlet", urlPatterns = {"/OrderServlet"})
+public class OrderServlet extends HttpServlet {
 
- ChartDAO chartDAO = new ChartDAO();
+    OrderSttDAO odersttDAO = new OrderSttDAO();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     try {
-         request.setAttribute("listItem", chartDAO.getAll());
-     } catch (SQLException ex) {
-         Logger.getLogger(ChartServlet.class.getName()).log(Level.SEVERE, null, ex);
-     }
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin/manager_chart.jsp");
-        rd.forward(request, response);
+        String command = request.getParameter("command");
+        String idOrder = request.getParameter("ID_Orders");
+        String idLoai = request.getParameter("Loai");
+        String url = request.getParameter("URL1204");
+
+        odersttDAO.setTrangthai(Long.parseLong(idOrder), Integer.parseInt(idLoai));
+
+        response.sendRedirect(url);
+
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     }
-
-   
 
 }

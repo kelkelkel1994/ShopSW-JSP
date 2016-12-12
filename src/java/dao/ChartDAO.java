@@ -43,4 +43,71 @@ public class ChartDAO {
         connection.close();
         return list;
     }
+
+    //số lượng dơn hàng theo tháng
+    public ArrayList<ChartPie> getDonhangThang() throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "SELECT\n"
+                + "MONTH(orders.CreatedDate) As Thang,COUNT(ID_Order) As SL\n"
+                + "FROM\n"
+                + "orders\n"
+                + "GROUP BY\n"
+                + "MONTH(orders.CreatedDate)";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        ArrayList<ChartPie> list = new ArrayList<>();
+        while (rs.next()) {
+            ChartPie c = new ChartPie();
+            c.setName(rs.getString("Thang"));
+            c.setValue(rs.getInt("SL"));
+            list.add(c);
+        }
+        connection.close();
+        return list;
+    }
+
+    //Đên đơn hàng
+    public int countDonHang() throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "SELECT count(ID_Order) FROM orders WHERE Status=true";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        int count = 0;
+        while (rs.next()) {
+            count = rs.getInt(1);
+        }
+        connection.close();
+        return count;
+    }
+    //đế sản phẩm
+
+    public int countSP() throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "SELECT count(ID_Product) FROM product WHERE Status=true";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        int count = 0;
+        while (rs.next()) {
+            count = rs.getInt(1);
+        }
+        connection.close();
+        return count;
+    }
+    //tong doanh thu
+
+    public int sumDoanhThu() throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "SELECT\n"
+                + "Sum(orders.Total)\n"
+                + "FROM\n"
+                + "orders WHERE Status=true";
+        PreparedStatement ps = connection.prepareCall(sql);
+        ResultSet rs = ps.executeQuery();
+        int count = 0;
+        while (rs.next()) {
+            count = rs.getInt(1);
+        }
+        connection.close();
+        return count;
+    }
 }
