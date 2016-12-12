@@ -48,7 +48,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                                <i class="fa fa-dashboard"></i>  <a href="index.jsp">Dashboard</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-table"></i> Thêm tên danh mục
@@ -63,7 +63,7 @@
                     
                         <div class="panel panel-success" >
                             <div class="panel-heading">
-                                <h3 class="panel-title"> Tên danh mục </label></h3>
+                                <h3 class="panel-title"> Tên danh mục</h3>
                             </div>
                             <div class="panel-body">
                             <input type="text" class="form-control" name="tenDanhMuc" placeholder="Nhập tên danh mục"><%=error%>

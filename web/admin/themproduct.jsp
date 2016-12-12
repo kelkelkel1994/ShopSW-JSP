@@ -170,7 +170,7 @@
                                             <button type="reset" class="btn btn-default">Nhập lại</button>
                                             <input id="submit" type="hidden" name="command" value="insert" >
                                             <input id="submit" type="submit" class="btn btn-default" value="Lưu dữ liệu" >
-                                            <a href="${root}/admin/quanlyproduct.jsp"  class="btn btn-default">Hủy bỏ</a>
+                                            <a href="${root}/admin/quanlyproduct.jsp?pages=1"  class="btn btn-default">Hủy bỏ</a>
                                         </div>
                                     </div>
                                 </div>

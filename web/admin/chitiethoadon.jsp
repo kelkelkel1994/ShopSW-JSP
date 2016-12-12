@@ -3,6 +3,8 @@
     Created on : Dec 9, 2016, 9:47:56 PM
     Author     : SONPC
 --%>
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="dao.OrderSttDAO"%>
 <%@page import="model.OrderStt"%>
 <%@page import="model.DonHang"%>
@@ -60,6 +62,8 @@
                             long id = Long.valueOf(request.getParameter("ID_Order"));
                             DonHangDAO donhangDAO = new DonHangDAO();
                             ArrayList<DonHang> listDonHang = donhangDAO.getListDonHang();
+                            NumberFormat formatter = new DecimalFormat("###,###");
+                            int tong=0;
                         %>
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -69,7 +73,7 @@
                                 <%
                                     for (DonHang dh1 : listDonHang) {
                                         if (dh1.getIdDonhang() == id) {
-                                            
+
                                 %>
                                 <div class="row">
                                     <div class="col-lg-4">
@@ -150,22 +154,23 @@
 
                                                 %>
                                                 <div class="list-group">
-                                                     <button class="btn btn-lg btn-default" onclick="window.location.href ='${root}/OrderServlet?command=setloai&ID_Orders=<%=id%>&Loai=<%=loai.getValue()%>&URL1204=<%=url%>'" <%if(loai.getValue()==dh1.getIdSuly()){%>disabled<%}%>> <%=loai.getName()%> </button>                                           
-                                                    
+                                                    <button class="btn btn-lg btn-default" onclick="window.location.href = '${root}/OrderServlet?command=setloai&ID_Orders=<%=id%>&Loai=<%=loai.getValue()%>&URL1204=<%=url%>'" <%if (loai.getValue() == dh1.getIdSuly()) {%>disabled<%}%>> <%=loai.getName()%> </button>                                           
+
                                                 </div>
-                                                <%}}%>
-<!--                                                <div class="list-group">
-                                                                                                        <a href="#" class="list-group-item"> 
-                                                                                                             <i class="fa fa-fw"></i>dad
-                                                                                                        </a>
-                                                    <button class="btn btn-lg btn-default">dadasd</button>
-                                                </div>
-                                                <div class="list-group">
-                                                                                                        <a href="#" class="list-group-item">
-                                                                                                            <i class="fa fa-fw"></i>dad
-                                                                                                        </a>
-                                                    <button class="btn btn-lg btn-default">dasda</button>
-                                                </div>-->
+                                                <%}
+                                                    }%>
+                                                <!--                                                <div class="list-group">
+                                                                                                                                                        <a href="#" class="list-group-item"> 
+                                                                                                                                                             <i class="fa fa-fw"></i>dad
+                                                                                                                                                        </a>
+                                                                                                    <button class="btn btn-lg btn-default">dadasd</button>
+                                                                                                </div>
+                                                                                                <div class="list-group">
+                                                                                                                                                        <a href="#" class="list-group-item">
+                                                                                                                                                            <i class="fa fa-fw"></i>dad
+                                                                                                                                                        </a>
+                                                                                                    <button class="btn btn-lg btn-default">dasda</button>
+                                                                                                </div>-->
 
 
                                             </div>
@@ -203,8 +208,10 @@
 
 
                             <%                                int count = 0;
+                            
                                 for (CTHD dh : listCTHD) {
                                     count++;
+                                    tong+=dh.getTongcong();
                             %>
 
                             <tr >
@@ -213,7 +220,7 @@
                             <td ><center><%=dh.getIdSanpham()%></center></td>
                             <td><center><%=dh.getTensanpham()%></center></td>
                             <td><center><%=dh.getSoluong()%></center></td>
-                            <td><center><%=dh.getTongcong()%></center></td>
+                            <td><center><%=formatter.format(dh.getTongcong())%></center></td>
                             <!--                            <td >
                                                         <center>
                                                             <a href="${root}/admin/suacategory.jsp?command=update&ID_Category=<%=dh.getIdSanpham()%>">Sửa</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
@@ -222,7 +229,10 @@
                                                         </td>-->
                             </tr>
                             <%}%>
-
+                            <div class="col-xs-12 text-right">
+                                <div>Trị giá</div>  
+                              <div class="huge"><%=formatter.format(tong)%> VND</div>  
+                            </div> 
                         </table>
                     </div>
                 </div>
