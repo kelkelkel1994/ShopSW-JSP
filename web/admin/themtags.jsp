@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <div style="margin-bottom: 20px">
-                                        <input type="text" value="" data-role="tagsinput" class="form-control" name="tenTag"  >
+                                        <input type="text" value="" data-role="tagsinput" class="form-control" name="tenTag" required="" >
                                     </div>
                                     <input type="hidden" name="command" value="insert">
                                     <input type="submit" class="btn btn-default" value="Lưu dữ liệu" >

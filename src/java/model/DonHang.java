@@ -26,11 +26,12 @@ public class DonHang {
     private boolean st;
     private long idKhach;
     private long idSuly;
+    private String magiaodich;
 
     public  DonHang(){
         
     }
-    public DonHang(long idDonhang, String tenKhach, String tenThanhtoan, long soluong, long tong, Timestamp ngaydat, String tinhtrangHD, String emailKhach, String shipname, String shipAdd, String shipPhone, boolean st,long idKhach,long idSuly) {
+    public DonHang(long idDonhang, String tenKhach, String tenThanhtoan, long soluong, long tong, Timestamp ngaydat, String tinhtrangHD, String emailKhach, String shipname, String shipAdd, String shipPhone, boolean st,long idKhach,long idSuly,String magiaodich) {
         this.idDonhang = idDonhang;
         this.tenKhach = tenKhach;
         this.tenThanhtoan = tenThanhtoan;
@@ -45,6 +46,7 @@ public class DonHang {
         this.st = st;
         this.idKhach = idKhach;
         this.idSuly = idSuly;
+        this.magiaodich = magiaodich;
     }
 
     public long getIdDonhang() {
@@ -157,6 +159,14 @@ public class DonHang {
 
     public void setIdSuly(long idSuly) {
         this.idSuly = idSuly;
+    }
+
+    public String getMagiaodich() {
+        return magiaodich;
+    }
+
+    public void setMagiaodich(String magiaodich) {
+        this.magiaodich = magiaodich;
     }
     
     

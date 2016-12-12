@@ -40,7 +40,8 @@ public class DonHangDAO {
                 + "orders.ShipPhone,\n"
                 + "orders.`Status`,\n"
                 + "orders.ID_Customer,\n"
-                + "status_order.ID_Status AS SulyDH\n"
+                + "status_order.ID_Status AS SulyDH,\n"
+                + "orders.Transaction\n"
                 + "FROM\n"
                 + "orders\n"
                 + "INNER JOIN customer ON orders.ID_Customer = customer.ID_Customer\n"
@@ -70,6 +71,7 @@ public class DonHangDAO {
             }
             dh.setIdKhach(rs.getLong("ID_Customer"));
             dh.setIdSuly(rs.getLong("SulyDH"));
+            dh.setMagiaodich(rs.getString("Transaction"));
             list.add(dh);
 
         }

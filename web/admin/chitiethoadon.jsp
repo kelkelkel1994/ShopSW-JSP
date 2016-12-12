@@ -63,7 +63,7 @@
                             DonHangDAO donhangDAO = new DonHangDAO();
                             ArrayList<DonHang> listDonHang = donhangDAO.getListDonHang();
                             NumberFormat formatter = new DecimalFormat("###,###");
-                            int tong=0;
+                            int tong = 0;
                         %>
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -138,6 +138,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-lg-4">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
@@ -177,8 +178,19 @@
                                         </div>
                                     </div>
 
-                                </div>
 
+                                </div>
+                                <% if (dh1.getMagiaodich() != null) {%>
+                                <div class="row">
+                                    <div class="text-right">
+
+
+                                        <div class="alert alert-info">
+                                            <strong>Mã giao dich paypal: </strong> <span style="font-size: 32px"><%=dh1.getMagiaodich()%></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}%>
                                 <%}
                                     }%>
 
@@ -208,10 +220,10 @@
 
 
                             <%                                int count = 0;
-                            
+
                                 for (CTHD dh : listCTHD) {
                                     count++;
-                                    tong+=dh.getTongcong();
+                                    tong += dh.getTongcong();
                             %>
 
                             <tr >
@@ -231,7 +243,7 @@
                             <%}%>
                             <div class="col-xs-12 text-right">
                                 <div>Trị giá</div>  
-                              <div class="huge"><%=formatter.format(tong)%> VND</div>  
+                                <div class="huge"><%=formatter.format(tong)%> VND</div>  
                             </div> 
                         </table>
                     </div>
