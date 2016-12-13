@@ -33,6 +33,11 @@ public class CategoryDAO {
             Category category = new Category();
             category.setCategoryID(rs.getLong("ID_Category"));
             category.setCategoryName(rs.getString("Name"));
+            if (Integer.parseInt(rs.getString("Status")) == 0) {
+                category.setCategorySt(false);
+            } else {
+                category.setCategorySt(true);
+            }
             list.add(category);
         }
         connection.close();
@@ -113,10 +118,40 @@ public class CategoryDAO {
         return false;
     }
 
-    // xóa dữ liệu
+//    // xóa dữ liệu
+//    public boolean deleteCategory(long category_id) throws SQLException {
+//        Connection connection = DBConnect.getConnection();
+//        String sql = "DELETE FROM product_category WHERE ID_Category = ?";
+//        try {
+//            PreparedStatement ps = connection.prepareCall(sql);
+//            ps.setLong(1, category_id);
+//            return ps.executeUpdate() == 1;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }finally{
+//            connection.close();
+//        }
+//        return false;
+//    }
+    // xóa dữ liệu (set trạng thái)
     public boolean deleteCategory(long category_id) throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "DELETE FROM product_category WHERE ID_Category = ?";
+        String sql = "UPDATE product_category SET Status=FALSE WHERE ID_Category = ?";
+        try {
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setLong(1, category_id);
+            return ps.executeUpdate() == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            connection.close();
+        }
+        return false;
+    }
+    //khôi phục
+    public boolean khoiphucCategory(long category_id) throws SQLException {
+        Connection connection = DBConnect.getConnection();
+        String sql = "UPDATE product_category SET Status=true WHERE ID_Category = ?";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setLong(1, category_id);

@@ -3,6 +3,8 @@
     Created on : Dec 2, 2016, 3:44:46 PM
     Author     : SONPC
 --%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.GregorianCalendar"%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -221,7 +223,7 @@
                     <div class="col-lg-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Area Chart</h3>
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Sản phẩm năm <%=new GregorianCalendar().get(Calendar.YEAR)%> </h3>
                             </div>
                             <div class="panel-body">
                                 <div id="sondoan1204" style="height: 300px; width: 100%;"></div>
@@ -231,7 +233,7 @@
                     <div class="col-lg-8">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Area Chart</h3>
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kê năm <%=new GregorianCalendar().get(Calendar.YEAR)%></h3>
                             </div>
                             <div class="panel-body">
                                 <div id="ahihi" style="height: 300px; width: 100%;"></div>

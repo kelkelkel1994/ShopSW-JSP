@@ -68,15 +68,18 @@
                                     <div class="row"> 
                                         <div class="col-lg-6">
                                             <div class="panel-body">
-                                                <div class="form-group">
+                                                <div class="form-group" style="text-align: center;">
                                                     <label>Logo</label>
                                                      <input type="file" class="form-control" name="logo12">
-                                                    <input type="text" class="form-control" name="tenLogo" value="<%=c.getLogo()%>"readonly>
+                                                    <input type="hidden" class="form-control" name="tenLogo" value="<%=c.getLogo()%>">
+                                                <img src="${root}/upload/<%=c.getLogo()%>" style="width: 205px;height: 65px">
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group" style="text-align: center;">
                                                     <label>Icon</label>
                                                      <input type="file" class="form-control" name="icon12">
-                                                     <input type="text" class="form-control" name="tenIcon" value="<%=c.getIcon()%>"readonly>                                            </div>
+                                                     <input type="hidden" class="form-control" name="tenIcon" value="<%=c.getIcon()%>">
+                                                     <img src="${root}/upload/<%=c.getIcon()%>" style="width: 65px;height: 65px">
+                                            </div>
                                             <div class="form-group">
                                                 <label>Hotline</label>
                                                 <input type="text" class="form-control" name="tenHotline" value="<%=c.getHotline()%>">

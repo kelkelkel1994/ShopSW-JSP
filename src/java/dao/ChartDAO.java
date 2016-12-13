@@ -22,6 +22,7 @@ import model.Customer;
  */
 public class ChartDAO {
 
+    // lấy theo năm hiện tại 
     public ArrayList<ChartPie> getAll() throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "SELECT\n"
@@ -44,13 +45,13 @@ public class ChartDAO {
         return list;
     }
 
-    //số lượng dơn hàng theo tháng
+    //số lượng dơn hàng theo tháng lấy theo năm hiện tại
     public ArrayList<ChartPie> getDonhangThang() throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "SELECT\n"
                 + "MONTH(orders.CreatedDate) As Thang,COUNT(ID_Order) As SL\n"
                 + "FROM\n"
-                + "orders\n"
+                + "orders\n WHERE YEAR(orders.CreatedDate) = YEAR(NOW()) \n"
                 + "GROUP BY\n"
                 + "MONTH(orders.CreatedDate)";
         PreparedStatement ps = connection.prepareCall(sql);
