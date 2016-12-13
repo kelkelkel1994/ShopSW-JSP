@@ -186,7 +186,7 @@
 
 
                                         <div class="alert alert-info">
-                                            <strong>Mã giao dich paypal: </strong> <span style="font-size: 32px"><%=dh1.getMagiaodich()%></span>
+                                            <strong>Mã giao dich paypal: </strong> <span style="font-size: 32px">#<%=dh1.getMagiaodich()%></span>
                                         </div>
                                     </div>
                                 </div>

@@ -129,7 +129,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
 
-                    <li class="active">
+                    <li >
                         <a href="index.jsp"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
@@ -199,7 +199,7 @@
                     <li>
                         <a href="seoproduct.jsp?pages=1"><i class="fa fa-fw fa-desktop"></i> KeyWords Sản phẩm</a>
                     </li>
-                    <li>
+<!--                    <li>
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
                     </li>
                     <li>
@@ -215,7 +215,7 @@
                     </li>
                     <li>
                         <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
