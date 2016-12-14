@@ -11,7 +11,7 @@ package model;
  */
 public class Admin {
     private long id_admin;
-    private long id_git;
+    private String id_git;
     private String username;
     private String pass;
     private String avata;
@@ -22,7 +22,7 @@ public class Admin {
     public Admin(){
         
     }
-    public Admin(long id_admin, long id_git, String username, String pass, String avata, String email, String name, boolean st) {
+    public Admin(long id_admin, String id_git, String username, String pass, String avata, String email, String name, boolean st) {
         this.id_admin = id_admin;
         this.id_git = id_git;
         this.username = username;
@@ -43,11 +43,11 @@ public class Admin {
         this.id_admin = id_admin;
     }
 
-    public long getId_git() {
+    public String getId_git() {
         return id_git;
     }
 
-    public void setId_git(long id_git) {
+    public void setId_git(String id_git) {
         this.id_git = id_git;
     }
 

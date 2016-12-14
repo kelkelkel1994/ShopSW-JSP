@@ -27,7 +27,7 @@ public class AdminDAO {
         try {
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setLong(1, c.getId_admin());
-            ps.setLong(2, c.getId_git());
+            ps.setString(2, c.getId_git());
             ps.setString(3, c.getUsername());
             ps.setString(4, c.getPass());
             ps.setString(5, c.getAvata());
@@ -44,7 +44,7 @@ public class AdminDAO {
 
 
     // kiểm tra đăng nhập
-    public Admin logingit(long id_git) throws SQLException {
+    public Admin logingit(String id_git) throws SQLException {
         Connection connection = DBConnect.getConnection();
         String sql = "SELECT\n"
                 + "*\n"
@@ -54,12 +54,12 @@ public class AdminDAO {
                 + "administration.ID_Git=?";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
-            ps.setLong(1, id_git);
+            ps.setString(1, id_git);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Admin a = new Admin();
                 a.setId_admin(rs.getLong("ID_Admin"));
-                a.setId_git(rs.getLong("ID_Git"));
+                a.setId_git(rs.getString("ID_Git"));
                 a.setUsername(rs.getString("Username"));
                 a.setPass(rs.getString("Password"));
                 a.setAvata(rs.getString("Avata"));

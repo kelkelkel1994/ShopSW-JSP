@@ -48,12 +48,12 @@ public class AdminServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Admin admin=new Admin();
         try {
-            if(adminDAO.logingit(Long.valueOf(idgit))==null){
+            if(adminDAO.logingit(idgit)==null){
                 try {
                     
                     switch (command) {
                         case "insert":
-                            adminDAO.insertAdmin(new Admin(new Date().getTime(), Long.valueOf(idgit), user,
+                            adminDAO.insertAdmin(new Admin(new Date().getTime(), idgit, user,
                                     null, anhdaidien, email,ten , true));
                             break;
                             
@@ -63,12 +63,12 @@ public class AdminServlet extends HttpServlet {
                 }
                 //RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
                 //rd.forward(request, response);
-                admin=adminDAO.logingit(Long.valueOf(idgit));
+                admin=adminDAO.logingit(idgit);
                 //response.sendRedirect("index.jsp");
                 session.setAttribute("admin", admin);
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("admin/index.jsp");
             }else{
-                admin=adminDAO.logingit(Long.valueOf(idgit));
+                admin=adminDAO.logingit(idgit);
                 session.setAttribute("admin", admin);
                 response.sendRedirect("admin/index.jsp");
             }  
