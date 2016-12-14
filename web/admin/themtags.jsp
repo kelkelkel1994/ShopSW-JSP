@@ -87,7 +87,7 @@
                                     <span class="input-group-addon">VNĐ</span>
                                 </div>
                                     <div class="text-right">
-                                    <a href="${root}/admin/suaproduct.jsp?command=update&ID_Product=<%=c.getProductID()%>">Sửa thông tin sản phẩm <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="${root}/admin/suaproduct.jsp?command=update&ID_Product=<%=c.getProductID()%>">Sửa thông tin sản phẩm <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
 
 
                                 %>
-                                <span class="badge"><%=tags.getKeyword()%> <a href="${root}/TagsServlet?command=delete&ID_Tags=<%=tags.getId_tags()%>&ID_Product=<%=id%>&Url12=<%=url%>">x</a></span>
+                                <span class="badge"><%=tags.getKeyword()%> <a href="${root}/TagsServlet?command=delete&ID_Tags=<%=tags.getId_tags()%>&ID_Product=<%=id%>&Url12=<%=url%>"  style="color: #FFF">x</a></span>
                                 <%}%>
                             </div>
                         </div>
