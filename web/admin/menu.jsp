@@ -3,13 +3,14 @@
     Created on : Dec 2, 2016, 3:51:01 PM
     Author     : SONPC
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="model.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <c:set var="root" value="${pageContext.request.contextPath}"/>
         <title>menu</title>
     </head>
     <body>
@@ -230,14 +231,14 @@
 
         <!-- /.container-fluid -->
         <!-- jQuery Version 1.11.0 -->
-        <script src="js/jquery-1.11.0.js"></script>
+        <script src="${root}/admin/js/jquery-1.11.0.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="${root}/admin/js/bootstrap.min.js"></script>
 
         <!-- Morris Charts JavaScript -->
-        <script src="js/plugins/morris/raphael.min.js"></script>
-        <script src="js/plugins/morris/morris.min.js"></script>
-        <script src="js/plugins/morris/morris-data.js"></script>
+        <script src="${root}/admin/js/plugins/morris/raphael.min.js"></script>
+        <script src="${root}/admin/js/plugins/morris/morris.min.js"></script>
+        <script src="${root}/admin/js/plugins/morris/morris-data.js"></script>
     </body>
 </html>

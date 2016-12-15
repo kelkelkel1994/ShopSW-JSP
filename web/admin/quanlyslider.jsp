@@ -32,13 +32,14 @@
     <title>Quản Lý danh mục</title>
 </head>
 <body>
+    <jsp:include page="menu.jsp"></jsp:include>
     <%
         SlideDAO categoryDAO = new SlideDAO ();
         ArrayList<Slide> listCategory = categoryDAO.getListThongtin();
     %>
     <div id="wrapper">
 
-        <jsp:include page="menu.jsp"></jsp:include>
+        
         <div class="col-lg-12">
                         <h1 class="page-header">
                            Quản lý Slider
