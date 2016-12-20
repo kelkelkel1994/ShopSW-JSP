@@ -8,56 +8,63 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.SlideDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
    <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+      <c:set var="root" value="${pageContext.request.contextPath}"/>
 
 
-    <c:set var="root" value="${pageContext.request.contextPath}"/>
+        <!-- Bootstrap Core CSS -->
+        <link href="${root}/admin/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Bootstrap Core CSS -->
-    <link href="${root}/admin/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="${root}/admin/css/sb-admin.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="${root}/admin/css/sb-admin.css" rel="stylesheet">
+        <!-- Morris Charts CSS -->
+        <link href="${root}/admin/ss/plugins/morris.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="${root}/admin/css/plugins/morris.css" rel="stylesheet">
+        <!-- Custom Fonts -->
+        <link href="${root}/admin/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Quản trị</title>
+        <%
+            String error = "";
+            if(request.getParameter("error")!=null){
+                error = (String) request.getParameter("error");
+            }
+        %>
 
-    <!-- Custom Fonts -->
-    <link href="${root}/admin/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Quản Lý danh mục</title>
-</head>
-<body>
-    <jsp:include page="menu.jsp"></jsp:include>
-    <%
+    </head>
+     <body>
+
+        <div id="wrapper">
+
+            <jsp:include page="menu.jsp"></jsp:include>
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Quản lý danh mục
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-dashboard"></i>  <a href="index.jsp">Dashboard</a>
+                        </li>
+                        <li class="active">
+                            <i class="fa fa-table"></i> Quan lý Slider
+                        </li>
+                    </ol>
+                </div>
+				<%
         SlideDAO categoryDAO = new SlideDAO ();
         ArrayList<Slide> listCategory = categoryDAO.getListThongtin();
     %>
-    <div id="wrapper">
-
-        
-        <div class="col-lg-12">
-                        <h1 class="page-header">
-                           Quản lý Slider
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.jsp">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-table"></i> Danh sách Slider
-                            </li>
-                        </ol>
-                    </div>
-            <div id="page-wrapper">
-                <a href="${root}/admin/themslider.jsp" class="btn btn-default">Thêm ảnh slider</a>
-            <div class="row">
-
-                <div class="col-lg-12">
+                <div id="page-wrapper">
+                    <div class="row">
+                       <div class="col-lg-12">
+					   <a href="${root}/admin/themslider.jsp" class="btn btn-default">Thêm ảnh slider</a>
                     <table class="table table-bordered table-hover">
 
                         <tr >
@@ -101,8 +108,7 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
-
-</body>
+    </body>
 </html>
